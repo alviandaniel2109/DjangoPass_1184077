@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <script>
+                {% if messages %}
+                    {% for message in messages %}
+                        alert(message);
+                    {% endfor %}
+                {% endif %}
+            </script>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class='navbar navbar-default navbar-static-top'>
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{% url 'index' %}"> Django </a></li>
+                    <li><a class="navbar-link" href="{% url 'admin:index' %}"> Admin</a></li>
+                    <li><a class="navbar-link" href="{% url 'basic_app:register' %}">Registrasi</a></li>
+                
+                    {% if user.is_authenticated %}
+                        <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">Login</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            {% block body_block%}
+            {% endblock%}
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'basic_app/base.html' %}
+{% block body_block %}<div class="container">
+  <div class="jumbotron">
+    
+    {% if user.is_authenticated %}
+    <h1>Aplikasi Django Registrasi</h1>
+        <h2>Selamat Datang {{ user.username }}</h2><br>
+    {% else %}
+    <h1>Aplikasi Django Registrasi!</h1>
+        <h2>Selamat Datang.</h2>
+    {% endif %}
+  </div>
+</div>{% endblock %}
